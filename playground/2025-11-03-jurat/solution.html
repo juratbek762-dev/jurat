@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jurat</title>
+  <!-- 
+    Mashq: jurat
+    Sana: 2025-11-03 12:31:06
+    Turi: playground
+  -->
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+.matn{
+    color: red;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif, Times, serif;
+}
+</style>
+
+      <script>
+        (function() {
+          const originalLog = console.log;
+          const originalError = console.error;
+          const originalWarn = console.warn;
+          const originalInfo = console.info;
+          
+          console.log = function(...args) {
+            window.parent.postMessage({ type: 'console', level: 'log', message: args.map(String).join(' ') }, '*');
+            originalLog.apply(console, args);
+          };
+          
+          console.error = function(...args) {
+            window.parent.postMessage({ type: 'console', level: 'error', message: args.map(String).join(' ') }, '*');
+            originalError.apply(console, args);
+          };
+          
+          console.warn = function(...args) {
+            window.parent.postMessage({ type: 'console', level: 'warn', message: args.map(String).join(' ') }, '*');
+            originalWarn.apply(console, args);
+          };
+          
+          console.info = function(...args) {
+            window.parent.postMessage({ type: 'console', level: 'info', message: args.map(String).join(' ') }, '*');
+            originalInfo.apply(console, args);
+          };
+          
+          window.onerror = function(msg, url, line, col, error) {
+            window.parent.postMessage({ 
+              type: 'console', 
+              level: 'error', 
+              message: 'Error: ' + msg + ' at line ' + line 
+            }, '*');
+            return false;
+          };
+        })();
+      </script>
+    
+</head>
+<body>
+    <div class="matn">
+        <h1>MENING MAKTABIM</h1>
+    </div>
+<script>
+console.log('MENING MAKTABIM')
+</script>
+</body>
+</html>
+</body>
+</html>
